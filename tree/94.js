@@ -8,9 +8,9 @@ var inorderTraversal = function (root) {
   function traversal(root) {
     if (!root) return;
 
-    traversal(root);
+    traversal(root.left);
     ret.push(root.val);
-    traversal(root);
+    traversal(root.right);
   }
 
   traversal(root);

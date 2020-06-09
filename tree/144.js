@@ -31,7 +31,6 @@ var preorderTraversal = function (root) {
 };
 
 
-
 var preorderTraversal = function (root, ret) {
   let ret = [];
 
@@ -53,7 +52,6 @@ var preorderTraversal = function (root) {
   let stack = [];
 
   if (root) stack.push(root);
-  1.
   while (stack.length > 0) {
     // 弹出栈顶
     let ele = stack.pop();
@@ -68,3 +66,38 @@ var preorderTraversal = function (root) {
 };
 
 
+/**
+ * 更像计算机那样的去模拟递归 模拟执行命令压入栈
+ */
+
+class Commond {
+  constructor(text, node) {
+    this.text = text; // 所要去执行的命令
+    this.node = node;
+  }
+}
+
+var preorderTraversal = function (root) {
+  if (!root) return [];
+  let ret = [];
+
+  let stack = [];
+  stack.push(new Commond('go', root));
+
+  while (stack.length > 0) {
+    // 取出这条命令并运行
+    let commond = stack.pop();
+    if (commond.text === 'print') {
+      ret.push(commond.node.val);
+    }
+
+    if (commond.text === 'go') {
+      // 对入栈的条件作了判断， 相当于递归的终止条件
+      if (commond.node.right) stack.push(new Commond('go', commond.node.right));
+      if (commond.node.left) stack.push(new Commond('go', commond.node.left));
+      stack.push(new Commond('print', commond.node));
+    }
+  }
+
+  return ret;
+} 
