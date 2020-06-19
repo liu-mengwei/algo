@@ -1,3 +1,6 @@
+/**
+ * 时间复杂度 o(3的n次方)叶子节点数3的n次方 约为2的n次方 指数增长 只差常数
+ */
 var letterCombinations = function (digits) {
   const strMap = {
     '2': 'abc',
