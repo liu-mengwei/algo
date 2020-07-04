@@ -39,3 +39,4 @@
 279 todo 动态规划
 337 map 的key值可以存对象，但obj的key不行，会被转成字符串
 309 todo
+122 不能用new Array().fill(new Array()) 这样写的话，没有断开引用
