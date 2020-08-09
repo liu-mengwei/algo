@@ -11,17 +11,18 @@
   <strong>aa</strong>
 
   <script>
-    let a = [1, 2, 3];
-
-    a.forEach(item => {
-      console.log(item);
-
-      if (item === 1) {
-        return false;
+    function myFlat(arr) {
+      const res = []
+      while (arr.length) {
+        let val = arr.shift()  // 取到数组首值，并移除该值
+        if (Array.isArray(val)) {
+          arr.unshift(...val)  // 如果是拿到的值是数组就将该值展开添加到数组头，这就做了一次降维
+        } else {
+          res.push(val)  // 如果是值就直接添加到结果数组中
+        }
       }
-    })
-
-
+      return res
+    }
   </script>
 
 </body>
